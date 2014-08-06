@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>2014 mod_perl FAQ</title>
+    <link href="mod_perl-faq.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="main">
+    <h1>2014 mod_perl FAQ</h1>
+    <ul>
+        <li>
+            <div class="q">When should I use mod_perl?</div>
+            <div class="a">
+                Probably never.<br />
+                mod_perl was never meant to run perl web apps, it was meant for writing plugins for Apache's httpd.<br />
+                So if that's what you're doing, go ahead, with our blessings.<br />
+                Some examples include:
+                    <ul>
+                        <li>Modifying/adding vhosts</li>
+                        <li>Integrating with authz/authen layers</li>
+                    </ul>
+            </div>
+        </li>
+        <li>
+            <div class="q">But compared to using CGI, running under mod_perl is much faster! Why is that if it's not specifically made for this?</div>
+            <div class="a">
+                The biggest reason is that the code running under mod_perl is only compiled once.<br />
+                With CGI, the code is instead compiled for every request it recieves.<br />
+                A FastCGI/uWSGI/reverse proxy solution can be every bit as fast as running under mod_perl.
+            </div>
+        </li>
+        <li>
+            <div class="q">So, what should I use instead?</div>
+            <div class="a">
+                A perl web framework! There are many to choose from. Most will run under FastCGI and reverse proxy solutions.<br />
+                Some of the more used ones include:
+                    <ul>
+                        <li>Catalyst <a class="small" href="https://metacpan.org/pod/Catalyst">CPAN</a> <a class="small" href="http://www.catalystframework.org/">Website</a></li>
+                        <li>Dancer <a class="small" href="https://metacpan.org/pod/Dancer">CPAN</a> <a class="small" href="http://www.perldancer.org/">Website</a></li>
+                        <li>Mojolicious <a class="small" href="https://metacpan.org/pod/Mojolicious">CPAN</a> <a class="small" href="http://mojolicio.us/">Website</a></li>
+                        <li>Web::Machine <a class="small" href="https://metacpan.org/pod/Web::Machine">CPAN</a></li>
+                        <li>Web::Simple <a class="small" href="https://metacpan.org/pod/Web::Simple">CPAN</a></li>
+                    </ul>
+            </div>
+        </li>
+        <li>
+            <div class="q">I'm still not convinced. Running web apps under mod_perl has worked fine for me for years, why should I fix what isn't broken?</div>
+            <div class="a">
+                    Well, there are a number of things that mod_perl doesn't support or makes difficult or impossible:
+                        <ul>
+                            <li>Writing tests:<br />
+                                There is no decent mock Apache2.<br />
+                                No request/API objects.</li>
+                            <li>Portability:<br />
+                                mod_perl only works under Apache's httpd. If you want to use any other webserver, you're SOL.</li>
+                            <li>Apache::Registry.</li>
+                            <li>Graceful restarts can leave processes in limbo.</li>
+                            <li>Handling slow clients without the need for starting new processes and thus using more memory.</li>
+                            <li>User separation.</li>
+                            <li>Tie into an event-loop.</li>
+                            <li>SPDY/HTTP2.</li>
+                        </ul>
+                    Solving a lot of these would basically entail reinventing FastCGI (probably poorly).
+        </li>
+    </ul>
+</div>
+<div class="footer">
+    If you've got more questions or comments, ask on <a href="irc://irc.freenode.org/perl">freenode's #perl</a> ; FAQ compiled by pink_mist with many contributions by tm604.
+</div>
+</body>
+</html>
