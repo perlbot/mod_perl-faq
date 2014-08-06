@@ -46,21 +46,22 @@
         <li>
             <div class="q">I'm still not convinced. Running web apps under mod_perl has worked fine for me for years, why should I fix what isn't broken?</div>
             <div class="a">
-                    Well, there are a number of things that mod_perl doesn't support or makes difficult or impossible:
-                        <ul>
-                            <li>Writing tests:<br />
-                                There is no decent mock Apache2.<br />
-                                No request/API objects.</li>
-                            <li>Portability:<br />
-                                mod_perl only works under Apache's httpd. If you want to use any other webserver, you're SOL.</li>
-                            <li>Apache::Registry.</li>
-                            <li>Graceful restarts can leave processes in limbo.</li>
-                            <li>Handling slow clients without the need for starting new processes and thus using more memory.</li>
-                            <li>User separation.</li>
-                            <li>Tie into an event-loop.</li>
-                            <li>SPDY/HTTP2.</li>
-                        </ul>
-                    Solving a lot of these would basically entail reinventing FastCGI (probably poorly).
+                Well, there are a number of things that mod_perl doesn't support or makes difficult or impossible:
+                    <ul>
+                        <li>Writing tests:<br />
+                            There is no decent mock Apache2.<br />
+                            No request/API objects.</li>
+                        <li>Portability:<br />
+                            mod_perl only works under Apache's httpd. If you want to use any other webserver, you're SOL.</li>
+                        <li>Apache::Registry.</li>
+                        <li>Graceful restarts can leave processes in limbo.</li>
+                        <li>Handling slow clients without the need for starting new processes and thus using more memory.</li>
+                        <li>User separation.</li>
+                        <li>Tie into an event-loop.</li>
+                        <li>SPDY/HTTP2.</li>
+                    </ul>
+                Solving a lot of these would basically entail reinventing FastCGI (probably poorly).
+            </div>
         </li>
     </ul>
 </div>
