@@ -4,4 +4,4 @@ div.q { font-weight: bold; }
 div.a { margin-bottom: 2em; }
 a.small { font-size: 7pt; }
 ul { margin-top: 0.5em; margin-bottom: 1em; }
-p.license { auto; text-align: center; font-size: 7pt; }
+p.license { text-align: center; font-size: 7pt; }
