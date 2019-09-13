@@ -59,6 +59,8 @@
                         <li>User separation.</li>
                         <li>Tie into an event-loop.</li>
                         <li>SPDY/HTTP2.</li>
+                        <li>Using the 'event' mpm, which is the best mpm module Apache has.<br />
+                            You're relegated to using 'prefork', or 'worker' if you want to use mod_perl.</li>
                     </ul>
                 Solving a lot of these would basically entail reinventing FastCGI (probably poorly).
             </div>
